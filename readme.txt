@@ -2,7 +2,7 @@
 Contributors: scott.deluzio
 Tags: database, php, memory, version, wordpress, admin, debug, plugin, theme
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
-Requires at least: 3.0
+Requires at least: 3.4.0
 Tested up to: 3.8
 Stable tag: 1.1
 License: GPLv2 or later
