@@ -2,9 +2,9 @@
 Contributors: scott.deluzio
 Tags: database, php, memory, version, wordpress, admin, debug, plugin, theme
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
-Requires at least: 3.0
+Requires at least: 3.4.0
 Tested up to: 3.8
-Stable tag: 1.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,9 +47,15 @@ Sure! Once you have translated it, let me know and I'll be sure to get your tran
 1. Debug Info screenshot-1.png
 
 == Changelog ==
+= 1.3 =
+* Included Apache version to system environment data at top. This is redundant as it is also included in phpinfo() below. Provided on top to give non-technical users an easier way to find this information.
+
+= 1.1 =
+* Minor fix.
+
 = 1.0 =
 * Initial release.
 
 == Upgrade Notice ==
-= 1.0 =
-* Initial release.
+= 1.3 =
+* Included Apache version to system environment data at top.
