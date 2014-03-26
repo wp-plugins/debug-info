@@ -4,7 +4,7 @@
    Plugin URI: http://oizuled.com/wordpress-plugins/wordpress-debug-info-plugin
    Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
    Description: A plugin to display your server's PHP info and WordPress environment data for debugging purposes.
-   Version: 1.3.1
+   Version: 1.3.2
    Author: Scott DeLuzio
    Author URI: http://oizuled.com
    License: GPL2
@@ -70,7 +70,7 @@ function getMySqlVersion() {
 
 function oizuled_version_check() {
 	//outputs basic information
-	$notavailable = 'This information is not available.';
+	$notavailable = __('This information is not available.', 'php_info_translate');
 	if (!function_exists('get_bloginfo')) {
 		$wp = $notavailable;
 	} else {
@@ -95,6 +95,7 @@ function oizuled_version_check() {
 		$php = phpversion();
 	}
 	
+	/* Removing PHP memory usage/limit data as this provides usage data for current script, and may be misleading when diagnosing another script is causing memory issues
 	if (!function_exists('memory_get_usage')) {
 		$phpmemuse = $notavailable;
 	} else {
@@ -112,7 +113,7 @@ function oizuled_version_check() {
 		$phpmemlim = $notavailable;
 	} else {
 		$phpmemlim = ini_get('memory_limit');
-	}
+	} */
 	
 	if (!function_exists('getMySqlVersion')) {
 		$mysql = $notavailable;
@@ -135,8 +136,8 @@ function oizuled_version_check() {
 	$uri = $theme->get('ThemeURI');
 	$pluginlist = __('Active Plugins: ', 'php_info_translate');
 	$phpver = __('PHP Version: ', 'php_info_translate');
-	$phpmemory = __('PHP Memory Usage: ', 'php_info_translate');
-	$outof = __(' out of ', 'php_info_translate');
+	/* $phpmemory = __('PHP Memory Usage: ', 'php_info_translate');
+	$outof = __(' out of ', 'php_info_translate'); */
 	$mysqlver = __('MySQL Version: ', 'php_info_translate');
 	$apachever = __('Apache Version: ', 'php_info_translate');
 		
@@ -149,10 +150,9 @@ function oizuled_version_check() {
 			echo $plugin . ' | ';
 		}
 	echo '<br /><strong>' . $phpver . '</strong>' . $php . '<br />';
-	echo '<strong>' . $phpmemory . '</strong>' . $phpmemuse . $outof . $phpmemlim . '<br />';
+	//echo '<strong>' . $phpmemory . '</strong>' . $phpmemuse . $outof . $phpmemlim . '<br />';
 	echo '<strong>' . $mysqlver . '</strong>' . $mysql . '<br />';
 	echo '<strong>' . $apachever . '</strong>' . $apache . '<br />';
-	echo $apacheextension;
 	
 }
 

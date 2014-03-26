@@ -4,7 +4,7 @@ Tags: database, php, memory, version, wordpress, admin, debug, plugin, theme
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
 Requires at least: 3.4.0
 Tested up to: 3.8.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,7 @@ A plugin to display your server's PHP info and WordPress environment data for de
 Debug Info will provide you with information on your current WordPress operating environment. This is a helpful tool for you or a developer to use when trying to identify the root cause of an error, or other issue you may experience.
 
 Debug Info provides the following information:
+
 * WordPress version currently running on the site
 
 * Current/active WordPress theme name, theme version, theme author, and theme URI
@@ -56,6 +57,11 @@ Sure! Once you have translated it, let me know and I'll be sure to get your tran
 1. Debug Info screenshot-1.png
 
 == Changelog ==
+= 1.3.2 =
+* Fixed a bug that caused an error when displaying Apache version in some cases.
+* Removed PHP memory usage data as this was only returning the amount of memory that is currently being allocated to your PHP script. This may be misleading when attempting to diagnose issues with other scripts. 
+* Included .pot file for translations.
+
 = 1.3.1 =
 * Added a function check to avoid errors if certain functions do not exist in the current operating environment. Simply provides a 'not available' message for the pieces of information that cannot be retrieved, and continues to return as much information as possible.
 
@@ -72,5 +78,7 @@ Sure! Once you have translated it, let me know and I'll be sure to get your tran
 * Initial release.
 
 == Upgrade Notice ==
-= 1.3.1 =
-* Added a function check to avoid errors if certain functions do not exist in the current operating environment.
+= 1.3.2 =
+* Fixed a bug that caused an error when displaying Apache version in some cases.
+* Removed PHP memory usage data as this was only returning the amount of memory that is currently being allocated to your PHP script. This may be misleading when attempting to diagnose issues with other scripts. 
+* Included .pot file for translations.
