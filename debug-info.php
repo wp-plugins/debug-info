@@ -4,7 +4,7 @@
    Plugin URI: http://oizuled.com/wordpress-plugins/wordpress-debug-info-plugin
    Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
    Description: A plugin to display your server's PHP info and WordPress environment data for debugging purposes.
-   Version: 1.3.2
+   Version: 1.3.3
    Author: Scott DeLuzio
    Author URI: http://oizuled.com
    License: GPL2
@@ -27,10 +27,10 @@
 	*/
 
 /* Add language support */
-function php_info_lang() {
-	load_plugin_textdomain('php_info_translate', false, dirname(plugin_basename(__FILE__)) . '/lang/');
+function debug_info_lang() {
+	load_plugin_textdomain('debug-info', false, dirname(plugin_basename(__FILE__)) . '/lang/');
 }
-add_action('init', 'php_info_lang');
+add_action('init', 'debug_info_lang');
 	
 /* Info Page */
 
@@ -70,7 +70,7 @@ function getMySqlVersion() {
 
 function oizuled_version_check() {
 	//outputs basic information
-	$notavailable = __('This information is not available.', 'php_info_translate');
+	$notavailable = __('This information is not available.', 'debug-info');
 	if (!function_exists('get_bloginfo')) {
 		$wp = $notavailable;
 	} else {
@@ -127,19 +127,19 @@ function oizuled_version_check() {
 		$apache = apache_get_version();
 	}
 		
-	$wpver = __('WordPress Version: ', 'php_info_translate');
-	$themever = __('Current WordPress Theme: ', 'php_info_translate');
-	$themeversion = $theme->get('Name') . __(' version ', 'php_info_translate') . $theme->get('Version') . $theme->get('Template');
-	$themeauthor = __(' Theme Author: ', 'php_info_translate');
+	$wpver = __('WordPress Version: ', 'debug-info');
+	$themever = __('Current WordPress Theme: ', 'debug-info');
+	$themeversion = $theme->get('Name') . __(' version ', 'debug-info') . $theme->get('Version') . $theme->get('Template');
+	$themeauthor = __(' Theme Author: ', 'debug-info');
 	$themeauth = $theme->get('Author') . ' - ' . $theme->get('AuthorURI');
-	$themeuri = __(' Theme URI: ', 'php_info_translate');
+	$themeuri = __(' Theme URI: ', 'debug-info');
 	$uri = $theme->get('ThemeURI');
-	$pluginlist = __('Active Plugins: ', 'php_info_translate');
-	$phpver = __('PHP Version: ', 'php_info_translate');
-	/* $phpmemory = __('PHP Memory Usage: ', 'php_info_translate');
-	$outof = __(' out of ', 'php_info_translate'); */
-	$mysqlver = __('MySQL Version: ', 'php_info_translate');
-	$apachever = __('Apache Version: ', 'php_info_translate');
+	$pluginlist = __('Active Plugins: ', 'debug-info');
+	$phpver = __('PHP Version: ', 'debug-info');
+	/* $phpmemory = __('PHP Memory Usage: ', 'debug-info');
+	$outof = __(' out of ', 'debug-info'); */
+	$mysqlver = __('MySQL Version: ', 'debug-info');
+	$apachever = __('Apache Version: ', 'debug-info');
 		
 	echo '<strong>' . $wpver . '</strong>' . $wp . '<br />';
 	echo '<strong>' . $themever . '</strong>' . $themeversion . '<br />';
