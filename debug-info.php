@@ -4,7 +4,7 @@
    Plugin URI: http://oizuled.com/wordpress-plugins/wordpress-debug-info-plugin
    Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
    Description: A plugin to display your server's PHP info and WordPress environment data for debugging purposes.
-   Version: 1.3.3
+   Version: 1.3.4
    Author: Scott DeLuzio
    Author URI: http://oizuled.com
    License: GPL2
@@ -95,7 +95,7 @@ function oizuled_version_check() {
 		$php = phpversion();
 	}
 	
-	/* Removing PHP memory usage/limit data as this provides usage data for current script, and may be misleading when diagnosing another script is causing memory issues
+	/* Removing PHP memory usage/limit data as this provides usage data for the current script, and may be misleading when diagnosing another script is causing memory issues
 	if (!function_exists('memory_get_usage')) {
 		$phpmemuse = $notavailable;
 	} else {

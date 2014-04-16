@@ -3,8 +3,8 @@ Contributors: scott.deluzio
 Tags: database, php, memory, version, wordpress, admin, debug, plugin, theme
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
 Requires at least: 3.4.0
-Tested up to: 3.8.1
-Stable tag: 1.3.3
+Tested up to: 3.9
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,8 @@ Debug Info provides the following information:
 * Apache version
 
 * Full phpinfo() server environment information 
+
+Thanks to <a href="http://firstsiteguide.com">Ogi Djuraskovic</a> for the Spanish (es_ES) and Serbian (sr_RS) language translations.
 
 == Installation ==
 1. Download archive and unzip in wp-content/plugins or install via Plugins - Add New.
@@ -55,6 +57,10 @@ Sure! Once you have translated it, let me know and I'll be sure to get your tran
 1. Debug Info screenshot-1.png
 
 == Changelog ==
+= 1.3.4 =
+* Included Spanish and Serbian language translations.
+* Updated WordPress compatible up to 3.9.
+
 = 1.3.3 =
 * Fixed translation support.
 
@@ -79,5 +85,6 @@ Sure! Once you have translated it, let me know and I'll be sure to get your tran
 * Initial release.
 
 == Upgrade Notice ==
-= 1.3.3 =
-* Fixed translation support.
+= 1.3.4 =
+* Included Spanish and Serbian language translations.
+* Updated WordPress compatible up to 3.9.
