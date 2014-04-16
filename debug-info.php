@@ -4,7 +4,7 @@
    Plugin URI: http://oizuled.com/wordpress-plugins/wordpress-debug-info-plugin
    Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
    Description: A plugin to display your server's PHP info and WordPress environment data for debugging purposes.
-   Version: 1.0
+   Version: 1.3.4
    Author: Scott DeLuzio
    Author URI: http://oizuled.com
    License: GPL2
@@ -27,10 +27,10 @@
 	*/
 
 /* Add language support */
-function php_info_lang() {
-	load_plugin_textdomain('php_info_translate', false, dirname(plugin_basename(__FILE__)) . '/lang/');
+function debug_info_lang() {
+	load_plugin_textdomain('debug-info', false, dirname(plugin_basename(__FILE__)) . '/lang/');
 }
-add_action('init', 'php_info_lang');
+add_action('init', 'debug_info_lang');
 	
 /* Info Page */
 
@@ -46,44 +46,100 @@ function oizuled_debug_info() {
 
 function oizuled_get_php_info() {
 	//retrieve php info for current server
-	ob_start();
-	phpinfo();
-	$pinfo = ob_get_contents();
-	ob_end_clean();
- 
-	$pinfo = preg_replace( '%^.*<body>(.*)</body>.*$%ms','$1',$pinfo);
-	echo $pinfo;
+	if (!function_exists('ob_start') || !function_exists('phpinfo') || !function_exists('ob_get_contents') || !function_exists('ob_end_clean') || !function_exists('preg_replace')) {
+		echo 'This information is not available.';
+	} else {
+		ob_start();
+		phpinfo();
+		$pinfo = ob_get_contents();
+		ob_end_clean();
+	 
+		$pinfo = preg_replace( '%^.*<body>(.*)</body>.*$%ms','$1',$pinfo);
+		echo $pinfo;
+	}
 }
+
+function getMySqlVersion() {
+        global $wpdb;
+        $rows = $wpdb->get_results('select version() as mysqlversion');
+        if (!empty($rows)) {
+             return $rows[0]->mysqlversion;
+        }
+        return false;
+    }
 
 function oizuled_version_check() {
 	//outputs basic information
-	$wp = get_bloginfo( 'version' );
-	$theme = wp_get_theme();
-	$plugins = get_option('active_plugins', array());
-	
-	$php = phpversion();
-	
-	$mem_usage = memory_get_usage(true);
-	if ($mem_usage < 1024) {
-        $phpmemuse = $mem_usage."B"; 
-    } elseif ($mem_usage < 1048576) {
-        $phpmemuse = round($mem_usage/1024,2)."K"; 
-    } else {
-        $phpmemuse = round($mem_usage/1048576,2)."M"; 
+	$notavailable = __('This information is not available.', 'debug-info');
+	if (!function_exists('get_bloginfo')) {
+		$wp = $notavailable;
+	} else {
+		$wp = get_bloginfo( 'version' );
 	}
-	$phpmemlim = ini_get('memory_limit');
 	
-	$wpver = __('WordPress Version: ', 'php_info_translate');
-	$themever = __('Current WordPress Theme: ', 'php_info_translate');
-	$themeversion = $theme->get('Name') . __(' version ', 'php_info_translate') . $theme->get('Version') . $theme->get('Template');
-	$themeauthor = __(' Theme Author: ', 'php_info_translate');
+	if (!function_exists('wp_get_theme')) {
+		$theme = $notavailable;
+	} else {
+		$theme = wp_get_theme();
+	}
+	
+	if (!function_exists('get_option')) {
+		$plugins = $notavailable;
+	} else {
+		$plugins = get_option('active_plugins', array());
+	}
+	
+	if (!function_exists('phpversion')) {
+		$php = $notavailable;
+	} else {
+		$php = phpversion();
+	}
+	
+	/* Removing PHP memory usage/limit data as this provides usage data for the current script, and may be misleading when diagnosing another script is causing memory issues
+	if (!function_exists('memory_get_usage')) {
+		$phpmemuse = $notavailable;
+	} else {
+		$mem_usage = memory_get_usage(true);
+		if ($mem_usage < 1024) {
+			$phpmemuse = $mem_usage."B"; 
+		} elseif ($mem_usage < 1048576) {
+			$phpmemuse = round($mem_usage/1024,2)."K"; 
+		} else {
+			$phpmemuse = round($mem_usage/1048576,2)."M"; 
+		}
+	}
+	
+	if (!function_exists('ini_get')) {
+		$phpmemlim = $notavailable;
+	} else {
+		$phpmemlim = ini_get('memory_limit');
+	} */
+	
+	if (!function_exists('getMySqlVersion')) {
+		$mysql = $notavailable;
+	} else {
+		$mysql = getMySqlVersion();
+	}
+	
+	if (!function_exists('apache_get_version')) {
+		$apache = $notavailable;
+	} else {
+		$apache = apache_get_version();
+	}
+		
+	$wpver = __('WordPress Version: ', 'debug-info');
+	$themever = __('Current WordPress Theme: ', 'debug-info');
+	$themeversion = $theme->get('Name') . __(' version ', 'debug-info') . $theme->get('Version') . $theme->get('Template');
+	$themeauthor = __(' Theme Author: ', 'debug-info');
 	$themeauth = $theme->get('Author') . ' - ' . $theme->get('AuthorURI');
-	$themeuri = __(' Theme URI: ', 'php_info_translate');
+	$themeuri = __(' Theme URI: ', 'debug-info');
 	$uri = $theme->get('ThemeURI');
-	$pluginlist = __('Active Plugins: ', 'php_info_translate');
-	$phpver = __('PHP Version: ', 'php_info_translate');
-	$phpmemory = __('PHP Memory Usage: ', 'php_info_translate');
-	$outof = __(' out of ', 'php_info_translate');
+	$pluginlist = __('Active Plugins: ', 'debug-info');
+	$phpver = __('PHP Version: ', 'debug-info');
+	/* $phpmemory = __('PHP Memory Usage: ', 'debug-info');
+	$outof = __(' out of ', 'debug-info'); */
+	$mysqlver = __('MySQL Version: ', 'debug-info');
+	$apachever = __('Apache Version: ', 'debug-info');
 		
 	echo '<strong>' . $wpver . '</strong>' . $wp . '<br />';
 	echo '<strong>' . $themever . '</strong>' . $themeversion . '<br />';
@@ -94,7 +150,9 @@ function oizuled_version_check() {
 			echo $plugin . ' | ';
 		}
 	echo '<br /><strong>' . $phpver . '</strong>' . $php . '<br />';
-	echo '<strong>' . $phpmemory . '</strong>' . $phpmemuse . $outof . $phpmemlim . '<br />';
+	//echo '<strong>' . $phpmemory . '</strong>' . $phpmemuse . $outof . $phpmemlim . '<br />';
+	echo '<strong>' . $mysqlver . '</strong>' . $mysql . '<br />';
+	echo '<strong>' . $apachever . '</strong>' . $apache . '<br />';
 	
 }
 
