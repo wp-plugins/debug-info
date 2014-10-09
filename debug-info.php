@@ -1,16 +1,16 @@
 <?php
    /*
    Plugin Name: Debug Info
-   Plugin URI: http://oizuled.com/wordpress-plugins/wordpress-debug-info-plugin
-   Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN
+   Plugin URI: https://surpriseazwebservices.com/wordpress-plugins/wordpress-debug-info-plugin/
+   Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5VFWNLX2NQGQN
    Description: A plugin to display your server's PHP info and WordPress environment data for debugging purposes.
-   Version: 1.3.4
+   Version: 1.3.5
    Author: Scott DeLuzio
-   Author URI: http://oizuled.com
+   Author URI: https://surpriseazwebservices.com
    License: GPL2
    */
    
-	/*  Copyright 2013  Scott DeLuzio  (email : scott (at) oizuled.com)
+	/*  Copyright 2014  Scott DeLuzio  (email : scott (at) surpriseazwebservices.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 

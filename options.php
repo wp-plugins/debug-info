@@ -18,12 +18,12 @@
 	</div>
 	<div class="postbox">
 		<p><?php _e('If this plugin has helped you out at all, please consider making a donation to encourage future updates.<br />Your generosity is appreciated!', 'debug-info'); ?></p>
-			<a href="#" onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2A9X5BC7P4MN');">
+			<a href="#" onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5VFWNLX2NQGQN');">
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="147" height="47">
 			</a>
 		<p><?php _e('To report any issues with', 'debug-info'); ?> <strong><?php _e('this plugin', 'debug-info'); ?></strong><?php _e(', please visit the ', 'debug-info'); ?><a href="http://wordpress.org/support/plugin/debug-info"><?php _e('support page on WordPress.org', 'debug-info'); ?></a>.</p>
-		<p><?php _e('For all other WordPress support, please check out the following', 'debug-info'); ?> <a href="http://oizuled.com/wordpress-site-setup/"><?php _e('site set-up', 'debug-info'); ?></a>, <a href="http://oizuled.com/wordpress-support-24x7-unlimited-fast-fixes/"><?php _e('24x7 support', 'debug-info'); ?></a><?php _e(', and other', 'debug-info'); ?> <a href="http://oizuled.com/live-wordpress-support-services/"><?php _e('WordPress training', 'debug-info'); ?></a> <?php _e('services', 'debug-info'); ?>.</p>
-		<p><a href="https://twitter.com/oizuled" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @oizuled</a>
+		<p><?php _e('For all other WordPress support, please check out the following', 'debug-info'); ?> <a href="https://surpriseazwebservices.com/services/wordpress-site-install/"><?php _e('site set-up', 'debug-info'); ?></a>, <a href="https://surpriseazwebservices.com/services/wordpress-maintenance-support/"><?php _e('24x7 support', 'debug-info'); ?></a><?php _e(', and other', 'debug-info'); ?> <a href="https://surpriseazwebservices.com/services/"><?php _e('WordPress training', 'debug-info'); ?></a> <?php _e('services', 'debug-info'); ?>.</p>
+		<p><a href="https://twitter.com/SurpriseWebSvc" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @SurpriseWebSvc</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	</div>
 </div>
